@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'v2i_soft_stop_node = v2i_vehicle_pkg.v2i_soft_stop_node:main',
+            'pedestrian_control_node = v2i_vehicle_pkg.pedestrian_control_node:main'
         ],
     },
 )

@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# C++ Build Artifacts
+v2i_gazebo_plugins/build/
+*.o
+*.so
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake

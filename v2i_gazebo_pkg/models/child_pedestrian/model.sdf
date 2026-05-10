@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.7">
+  <!-- 💡 1. 역할에 맞게 이름 변경 -->
+  <actor name="Child_Pedestrian">
+    <skin>
+      <filename>meshes/MaleVisitorWalk.dae</filename>
+      <!-- 💡 2. 체구를 어린이 사이즈(0.6)로 축소 -->
+      <scale>0.6</scale>
+    </skin>
+    <animation name="walking">
+      <filename>meshes/MaleVisitorWalk.dae</filename>
+      <!-- 💡 애니메이션 뼈대도 스킨과 똑같이 0.6으로 축소 -->
+      <scale>0.6</scale>
+      <interpolate_x>true</interpolate_x>
+    </animation>
+    
+    <script>
+      <!-- 계속해서 길을 건너도록 설정 -->
+      <loop>true</loop>
+      <delay_start>0.0</delay_start>
+      <auto_start>true</auto_start>
+      
+      <!-- 💡 3. 제자리걸음 고치기: 횡단보도를 가로지르는 진짜 궤적(Trajectory) 이식 -->
+      <trajectory id="0" type="walking">
+        <!-- 출발점: 횡단보도 한쪽 끝 (0초) -->
+        <waypoint>
+          <time>0.0</time>
+          <pose>0 -3.0 0 0 0 1.57</pose>
+        </waypoint>
+        <!-- 도착점: 반대편 끝으로 5초 동안 걸어감 -->
+        <waypoint>
+          <time>5.0</time>
+          <pose>0 3.0 0 0 0 1.57</pose>
+        </waypoint>
+      </trajectory>
+    </script>
+  </actor>
+</sdf>

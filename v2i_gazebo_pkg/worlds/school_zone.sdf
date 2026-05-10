@@ -1,0 +1,1973 @@
+<sdf version='1.9'>
+  <world name='empty'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
+    <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
+    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
+    <plugin name='ignition::gazebo::systems::Contact' filename='ignition-gazebo-contact-system'/>
+    <!-- 💡 새롭게 추가할 '센서' 플러그인 (카메라를 작동시킵니다!) -->
+    <plugin name='ignition::gazebo::systems::Sensors' filename='ignition-gazebo-sensors-system'/>
+    
+    
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.6 0.6 0.6 1.0</ambient> 
+      <background>0.7 0.8 0.9 1.0</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <actor name='Child_Pedestrian'>
+      <skin>
+        <filename>model://child_pedestrian/meshes/mixamo_walk.dae</filename>
+        <scale>1.5</scale>
+      </skin>
+      <animation name='walking'>
+        <filename>model://child_pedestrian/meshes/mixamo_walk.dae</filename>
+        <scale>1.5</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <pose>1.0 0 0 0 0 0</pose>
+
+      <plugin filename="libactor_control_plugin.so" name="ActorControlPlugin">
+      </plugin>
+    </actor>
+
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1000 1000</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1000 1000</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 1.7941 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 1.39491 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 1.00157 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 0.60191 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_2'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 0.206138 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_3'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -0.189121 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_4'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -0.586563 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_5'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -0.9764 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_6'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -1.36875 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_7'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -1.75641 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_8'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -2.1336 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_9'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -2.50976 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_10'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.09054 -2.90985 5.6e-05 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='building-type-c'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>6.8138 26.9457 -0.002585 1.57079 9.6e-05 1.55789</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='building-type-e'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>7.6637 -2.5880 0.0002 1.57079 -9.6e-05 -1.56014</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='building-type-f'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>7.87119 -18.734 -0.557201 1.64211 0.002337 1.55362</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree-large'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.6094 19.1372 -0.001576 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_11'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -3.27766 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_11_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -3.65292 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_11_2'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -4.04238 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_11_3'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.08688 -4.43594 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='building-type-u'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>6.45878 11.392 -0.013978 1.57078 0.000796 1.54556</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree-large_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.6094 -4.7321 0.000441 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree-large_1_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.6094 -23.6118 0.000441 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree-large_1_1_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.6094 35.4282 0.000441 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+
+    <include>
+      <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/prius_hybrid</uri>
+      <name>prius_hybrid</name>
+      <pose>-0.7261 -44.0527 0.0 0 0 -3.14159</pose> 
+    </include>
+    <model name='path-long_2'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 5.67534 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 8.26593 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_4'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -8.05428 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 12.0054 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_2'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 15.8417 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_3'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 19.6212 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_4'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 23.5928 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_5'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 27.2683 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_3_6'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.07326 30.7131 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='building-type-c_1'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>7.11012 -32.4149 -0.002585 1.57079 9.6e-05 1.55789</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_12'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -11.6763 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_13'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -15.5579 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_14'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -19.1983 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_15'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -23.0724 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_16'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -26.8991 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_17'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -30.8807 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_18'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -34.7475 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_19'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -38.6147 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_20'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -42.4808 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_21'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 -46.4346 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_22'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 34.5101 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='path-long_1_1_23'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <scale>15 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1.088 38.0893 0 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree-large_2'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <scale>10 10 10</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.6094 -37.3703 -0.001576 1.5707 -0 0</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='yellow_crosswalk'>
+      <static>true</static>
+      <pose>0 0 0.1 0 -0 0</pose>
+      <link name='link'>
+        <visual name='stripe_2'>
+          <pose>-1.2 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 6 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.8 0 1</ambient>
+            <diffuse>1 0.8 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name='stripe_3'>
+          <pose>-1.5 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 6 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.8 0 1</ambient>
+            <diffuse>1 0.8 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name='stripe_4'>
+          <pose>-1.8 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 6 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.8 0 1</ambient>
+            <diffuse>1 0.8 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name='stripe_5'>
+          <pose>-0.9 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 6 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.8 0 1</ambient>
+            <diffuse>1 0.8 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name='stripe_6'>
+          <pose>-0.6 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 6 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.8 0 1</ambient>
+            <diffuse>1 0.8 0 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.5 -0.1 -0.9</direction>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.01</linear>
+        <constant>0.90000000000000002</constant>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>

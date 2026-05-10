@@ -23,3 +23,56 @@ Safe-Cross는 ROS2 및 Gazebo Fortress 시뮬레이션 환경에서 다음 5단�
 4. 자율주행 차량의 협력 제어: 일정한 초기 속도(v)로 주행 중인 자율주행 자동차는 자체 비전 센서의 보행자 식별 여부와 무관하게, 수신된 V2I 경고 메시지를 최우선 제어 명령으로 처리합니다. 메시지 수신 즉시 속도를 일정한 변화량(예: 0.2 m/s)만큼 선형적으로 감소시키는 Soft Stop Linear Deceleration Profile을 적용하여, 횡단보도 앞에 부드럽게 정차합니다.
    
 5. 안전 안내 및 상황 해제: 자율주행 차량의 완전 정차가 확인되면, 스마트 차단기 로봇이 차단바(Joint)를 올리고 보행자(어린이)에게 횡단 안내를 제공합니다. 횡단이 완료되면 V2I 경고 상태를 해제하고 차단바(Joint)를 다시 내려, 전체 교통 흐름을 정상적으로 재개합니다.
+
+## 주요 파일 설명
+가제보 시뮬레이션 환경 구축 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
+
+자율주행 자동차 주행 및 제어 (감속, 다시 시작 등) 파일: v2i_ws/src/Safe-Cross-V2I/v2i_vehicle_pkg/v2i_vehicle_pkg/v2i_soft_stop_node.py
+
+보행자 (actor) 애니메이션 및 제어 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/ActorControlPlugin.cc 
+
+## 실행
+터미널 1: 가제보 실행 
+export IGN_GAZEBO_RESOURCE_PATH=~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models:$IGN_GAZEBO_RESOURCE_PATH
+
+export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=$IGN_GAZEBO_SYSTEM_PLUGIN_PATH:~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/build
+
+QT_QPA_PLATFORM=xcb ign gazebo -v 4 --render-engine ogre ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
+
+-> 재생 버튼 클릭
+
+터미널 2: 가제보 - ros 브릿지
+ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist /camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image /barrier_msg@std_msgs/msg/Bool]ignition.msgs.Boolean
+
+터미널 3: rviz2로 자동차 운전석 시야 확인 
+rviz2
+
+(실행 후 Rviz 화면에서 Add -> By topic -> camera/image_raw/Image 플러그인을 추가하고, Topic을 /camera/image_raw, QoS를 Best Effort로 설정하세요.)
+
+터미널 4: 자동차 주행 노드
+cd ~/v2i_ws
+
+colcon build --symlink-install --packages-select v2i_vehicle_pkg
+
+source install/setup.bash
+
+ros2 run v2i_vehicle_pkg v2i_soft_stop_node
+
+터미널 5: 자동차 신호
+정지: ros2 topic pub --once /v2i_alert std_msgs/msg/Bool "{data: true}"
+
+다시 출발: ros2 topic pub --once /v2i_alert std_msgs/msg/Bool "{data: false}"
+
+터미널 6: 보행자 출발 신호 쏘기
+ros2 topic pub --once /barrier_msg std_msgs/msg/Bool "{data: true}"
+
+-> 완성하면 한 번에 launch 파일로 만들면 될 듯
+
+터미널 1~4 명령어 차례로 실행 -> [차단기 로봇이 보행자 인식 즉시] 자동차에게 터미널 5 메세지(정지) 전송 -> 자동차 멈추면, 차단기 로봇이 보행자에게 터미널 6 메세지 전송 -> [보행자가 다 건너가면] 차단기 로봇이 자동차에게 터미널 5 메세지(다시 출발) 전송
+
+## 남은 작업
+1. school_zone.sdf - 차단기 로봇 횡단보도 앞에 배치 
+2. yolo 보행자 인식
+3. 메세지 전송
+4. 차단기 관절 제어
+5. (시간이 된다면) 차단기 로봇이 "건너가세요" 음성 안내가 나와도 좋을 듯!
