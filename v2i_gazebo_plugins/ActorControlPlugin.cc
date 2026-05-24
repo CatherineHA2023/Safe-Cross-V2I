@@ -70,9 +70,9 @@ public:
 
   void OnMoveCommand(const msgs::Boolean &_msg)
   {
-    this->shouldMove = _msg.data();
+    if (_msg.data()) this->shouldMove = true;
     ignmsg << "[Actor Plugin] 🚦 스마트 차단기 로봇의 안내 수신: "
-           << (_msg.data() ? "🚶 전진" : "정지") << "\n";
+           << (_msg.data() ? "🚶 전진" : "정지(무시)") << "\n";
   }
 
   void PreUpdate(const gazebo::UpdateInfo &_info,
@@ -97,7 +97,9 @@ public:
       }
  
       // === 2. 이동 신호 시 X 오프셋 누적 (월드 X축 방향으로 전진) ===
-      this->offset_x -= 0.002;
+      this->offset_x -= 0.05;
+
+
     }
 
     // === 3. TrajectoryPose 갱신 (위치 + 자세 보정 회전 유지) ===

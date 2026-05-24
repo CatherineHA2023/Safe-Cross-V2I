@@ -1,9 +1,9 @@
 <sdf version='1.9'>
   <world name='empty'>
-    <physics name='1ms' type='ignored'>
-      <max_step_size>0.001</max_step_size>
+    <physics name='10ms' type='ignored'>
+      <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_update_rate>100</real_time_update_rate>
     </physics>
     <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
     <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
@@ -92,7 +92,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -100,7 +100,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -129,7 +129,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -137,7 +137,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -166,7 +166,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -174,7 +174,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -203,7 +203,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -211,7 +211,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -240,7 +240,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -248,7 +248,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -277,7 +277,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -285,7 +285,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -314,7 +314,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -322,7 +322,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -351,7 +351,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -359,7 +359,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -388,7 +388,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -396,7 +396,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -425,7 +425,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -433,7 +433,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -462,7 +462,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -470,7 +470,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -499,7 +499,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -507,7 +507,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -536,7 +536,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -544,7 +544,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -573,7 +573,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -581,7 +581,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -610,7 +610,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -618,7 +618,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-e.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -647,7 +647,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -655,7 +655,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-f.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -684,7 +684,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -692,7 +692,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -721,7 +721,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -729,7 +729,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -758,7 +758,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -766,7 +766,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -795,7 +795,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -803,7 +803,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -832,7 +832,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -840,7 +840,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -869,7 +869,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -877,7 +877,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-u.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -906,7 +906,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -914,7 +914,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -943,7 +943,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -951,7 +951,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -980,7 +980,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -988,7 +988,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -1014,16 +1014,16 @@
     </model>
 
     <include>
-      <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/prius_hybrid</uri>
+      <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/prius_hybrid</uri>
       <name>prius_hybrid</name>
-      <pose>-0.7261 -44.0527 0.0 0 0 -3.14159</pose> 
+      <pose>-1.088 -15.0 0.0 0 0 -3.14159</pose>
     </include>
     <model name='path-long_2'>
       <link name='link'>
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1031,7 +1031,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1060,7 +1060,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1068,7 +1068,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1097,7 +1097,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1105,7 +1105,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1134,7 +1134,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1142,7 +1142,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1171,7 +1171,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1179,7 +1179,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1208,7 +1208,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1216,7 +1216,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1245,7 +1245,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1253,7 +1253,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1282,7 +1282,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1290,7 +1290,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1319,7 +1319,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1327,7 +1327,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1356,7 +1356,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -1364,7 +1364,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/building-type-c.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -1393,7 +1393,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1401,7 +1401,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1430,7 +1430,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1438,7 +1438,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1467,7 +1467,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1475,7 +1475,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1504,7 +1504,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1512,7 +1512,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1541,7 +1541,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1549,7 +1549,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1578,7 +1578,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1586,7 +1586,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1615,7 +1615,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1623,7 +1623,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1652,7 +1652,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1660,7 +1660,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1689,7 +1689,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1697,7 +1697,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1726,7 +1726,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1734,7 +1734,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1763,7 +1763,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1771,7 +1771,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1800,7 +1800,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1808,7 +1808,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/path-long.obj</uri>
               <scale>15 10 10</scale>
             </mesh>
           </geometry>
@@ -1837,7 +1837,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -1845,7 +1845,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file:///home/cathy/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
+              <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/kenney_city-kit-suburban_20/city_kit/OBJ format/tree-large.obj</uri>
               <scale>10 10 10</scale>
             </mesh>
           </geometry>
@@ -1969,5 +1969,219 @@
         <falloff>0</falloff>
       </spot>
     </light>
+
+    <!-- ===== 차단기 로봇 1 (횡단보도 +Y 끝, y=3.0) ===== -->
+    <!-- 기둥이 바의 +Y 끝(y=3.0)에 위치, 바가 -Y 방향(안쪽)으로 3m 뻗음 -->
+    <!-- ===== 인프라 고정 카메라 (횡단보도 감시) ===== -->
+    <model name='infrastructure_camera'>
+      <static>true</static>
+      <pose>3.0 0.0 3.0 0 0 0</pose>
+      <link name='body'>
+        <visual name='pole'>
+          <pose>0 0 -1.5 0 0 0</pose>
+          <geometry><cylinder><radius>0.05</radius><length>3.0</length></cylinder></geometry>
+          <material><ambient>0.3 0.3 0.3 1</ambient></material>
+        </visual>
+        <visual name='cam_box'>
+          <geometry><box><size>0.15 0.15 0.1</size></box></geometry>
+          <material><ambient>0.1 0.1 0.1 1</ambient></material>
+        </visual>
+        <sensor name='v2i_camera' type='camera'>
+          <pose>0 0 0.2 0 1.01 3.1416</pose>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>camera/image_raw</topic>
+          <camera>
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+              <width>800</width>
+              <height>600</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip><near>0.1</near><far>50</far></clip>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+    <!-- angle=0   : 바가 Y방향(도로와 평행) → 보행자 차단              -->
+    <!-- angle=1.57: Z축 90도 회전 → 바가 X방향(도로에 수직) → 차량 차단 -->
+    <model name='crosswalk_barricade'>
+      <pose>0.5 -3.0 0 0 0 0</pose>
+
+      <!-- 기둥: 회색 수직 막대 + 넓은 받침대 (5000kg, 넘어지지 않음) -->
+      <link name='base'>
+        <pose>0 0 0.5 0 0 0</pose>
+        <inertial>
+          <mass>5000</mass>
+          <inertia>
+            <ixx>10417</ixx><ixy>0</ixy><ixz>0</ixz>
+            <iyy>10417</iyy><iyz>0</iyz><izz>20833</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry><box><size>0.1 0.1 1.0</size></box></geometry>
+        </collision>
+        <!-- 보이지 않는 넓은 받침대 (물리 안정용) -->
+        <collision name='base_plate'>
+          <pose>0 0 -0.45 0 0 0</pose>
+          <geometry><box><size>1.0 1.0 0.1</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>0.1 0.1 1.0</size></box></geometry>
+          <material>
+            <ambient>0.6 0.6 0.6 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- 차단바: 기둥(pivot)에서 +Y 방향으로 4.5m 뻗음 -->
+      <link name='bar'>
+        <pose>0 0 1.0 0 0 0</pose>
+        <inertial>
+          <pose>0 2.25 0 0 0 0</pose>
+          <mass>2</mass>
+          <inertia>
+            <ixx>3.376</ixx><ixy>0</ixy><ixz>0</ixz>
+            <iyy>0.001</iyy><iyz>0</iyz><izz>3.376</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 2.25 0 0 0 0</pose>
+          <geometry><box><size>0.08 4.5 0.08</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <pose>0 2.25 0 0 0 0</pose>
+          <geometry><box><size>0.08 4.5 0.08</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Z축 회전 조인트: 수평면에서 회전 -->
+      <joint name='bar_joint' type='revolute'>
+        <parent>base</parent>
+        <child>bar</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- JointPositionController: /barricade/joint_angle 토픽 수신 -->
+      <!-- 브릿지: /barricade/joint_angle@std_msgs/msg/Float64]ignition.msgs.Double -->
+      <plugin filename="ignition-gazebo-joint-position-controller-system"
+              name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>bar_joint</joint_name>
+        <topic>/barricade/joint_angle</topic>
+        <p_gain>30000</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>1200.0</d_gain>
+        <i_max>10</i_max>
+        <i_min>-10</i_min>
+        <cmd_max>50000</cmd_max>
+        <cmd_min>-50000</cmd_min>
+      </plugin>
+    </model>
+
+    <!-- ===== 차단기 로봇 2 (횡단보도 -Y 끝, y=-3.0) ===== -->
+    <!-- 기둥이 바의 -Y 끝(y=-3.0)에 위치, 바가 +Y 방향(안쪽)으로 3m 뻗음 -->
+    <!-- 같은 /barricade/joint_angle 토픽 구독 → 두 차단기 동시 제어       -->
+    <model name='crosswalk_barricade_2'>
+      <pose>-2.5 -3.0 0 0 0 0</pose>
+
+      <!-- 기둥: 회색 수직 막대 + 넓은 받침대 (5000kg, 넘어지지 않음) -->
+      <link name='base'>
+        <pose>0 0 0.5 0 0 0</pose>
+        <inertial>
+          <mass>5000</mass>
+          <inertia>
+            <ixx>10417</ixx><ixy>0</ixy><ixz>0</ixz>
+            <iyy>10417</iyy><iyz>0</iyz><izz>20833</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry><box><size>0.1 0.1 1.0</size></box></geometry>
+        </collision>
+        <!-- 보이지 않는 넓은 받침대 (물리 안정용) -->
+        <collision name='base_plate'>
+          <pose>0 0 -0.45 0 0 0</pose>
+          <geometry><box><size>1.0 1.0 0.1</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>0.1 0.1 1.0</size></box></geometry>
+          <material>
+            <ambient>0.6 0.6 0.6 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- 차단바: 기둥(pivot)에서 +Y 방향으로 4.5m 뻗음 -->
+      <link name='bar'>
+        <pose>0 0 1.2 0 0 0</pose>
+        <inertial>
+          <pose>0 2.25 0 0 0 0</pose>
+          <mass>2</mass>
+          <inertia>
+            <ixx>3.376</ixx><ixy>0</ixy><ixz>0</ixz>
+            <iyy>0.001</iyy><iyz>0</iyz><izz>3.376</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 2.25 0 0 0 0</pose>
+          <geometry><box><size>0.08 4.5 0.08</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <pose>0 2.25 0 0 0 0</pose>
+          <geometry><box><size>0.08 4.5 0.08</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Z축 회전 조인트 (반대 방향: -Z축 기준 회전 → 같은 명령에 반대로 열림) -->
+      <joint name='bar_joint' type='revolute'>
+        <parent>base</parent>
+        <child>bar</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- 같은 토픽 → 두 차단기 동시 제어 -->
+      <plugin filename="ignition-gazebo-joint-position-controller-system"
+              name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>bar_joint</joint_name>
+        <topic>/barricade/joint_angle</topic>
+        <p_gain>30000</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>1200.0</d_gain>
+        <i_max>10</i_max>
+        <i_min>-10</i_min>
+        <cmd_max>50000</cmd_max>
+        <cmd_min>-50000</cmd_min>
+      </plugin>
+    </model>
+
   </world>
 </sdf>

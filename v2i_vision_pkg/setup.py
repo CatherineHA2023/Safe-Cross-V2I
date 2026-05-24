@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/v2i_all_nodes.launch.py']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,6 +25,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'yolo_detector_node = v2i_vision_pkg.yolo_detector_node:main',
+            'barricade_control_node = v2i_vision_pkg.barricade_control_node:main',
         ],
     },
 )

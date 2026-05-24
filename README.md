@@ -29,7 +29,9 @@ Safe-Cross는 ROS2 및 Gazebo Fortress 시뮬레이션 환경에서 다음 5단�
 
 💡자율주행 자동차 주행 및 제어 (감속, 다시 시작 등) 파일: v2i_ws/src/Safe-Cross-V2I/v2i_vehicle_pkg/v2i_vehicle_pkg/v2i_soft_stop_node.py
 
-💡보행자 (actor) 애니메이션 및 제어 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/ActorControlPlugin.cc 
+💡보행자 (actor) 애니메이션 및 제어 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/ActorControlPlugin.cc
+
+💡전체 노드 일괄 실행 파일: v2i_ws/src/Safe-Cross-V2I/v2i_vision_pkg/launch/v2i_all_nodes.launch.py
 
 👉🏻 C++ 플러그인 빌드 필요 <br>
 $ cd ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins <br>
@@ -44,12 +46,12 @@ $ export IGN_GAZEBO_RESOURCE_PATH=~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/mod
 
 $ export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=$IGN_GAZEBO_SYSTEM_PLUGIN_PATH:~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/build
 
-$ QT_QPA_PLATFORM=xcb ign gazebo -v 4 --render-engine ogre ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
+$ ign gazebo ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
 
 → 재생 버튼 클릭
 
 ✅터미널 2: 가제보 - ros 브릿지 <br>
-$ ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist /camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image /barrier_msg@std_msgs/msg/Bool]ignition.msgs.Boolean
+$ ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist /camera/image_raw@sensor_msgs/msg/Image[ignition.msgs.Image /barrier_msg@std_msgs/msg/Bool]ignition.msgs.Boolean /barricade/joint_angle@std_msgs/msg/Float64]ignition.msgs.Double
 
 ✅터미널 3: rviz2로 자동차 운전석 시야 확인 <br> 
 $ rviz2
@@ -65,21 +67,25 @@ $ source install/setup.bash
 
 $ ros2 run v2i_vehicle_pkg v2i_soft_stop_node
 
-✅터미널 5: 자동차 신호 <br>
-정지: $ ros2 topic pub --once /v2i_alert std_msgs/msg/Bool "{data: true}"
+✅터미널 5: YOLO 보행자 감지 노드 <br>
+$ cd ~/v2i_ws
 
-다시 출발: $ ros2 topic pub --once /v2i_alert std_msgs/msg/Bool "{data: false}"
+$ colcon build --symlink-install --packages-select v2i_vision_pkg
 
-✅터미널 6: 보행자 출발 신호 쏘기 <br>
-$ ros2 topic pub --once /barrier_msg std_msgs/msg/Bool "{data: true}"
+$ source install/setup.bash
 
-👉🏻완성하면 한 번에 launch 파일로 만들면 될 듯
+$ ros2 run v2i_vision_pkg yolo_detector_node
 
-👉🏻터미널 1~4 명령어 차례로 실행 → [차단기 로봇이 보행자 인식 즉시] 자동차에게 터미널 5 메세지(정지) 전송 → 자동차 멈추면, 차단기 로봇이 보행자에게 터미널 6 메세지 전송 → [보행자가 다 건너가면] 차단기 로봇이 자동차에게 터미널 5 메세지(다시 출발) 전송
+✅터미널 6: 차단기 제어 노드 <br>
+$ source ~/v2i_ws/install/setup.bash
 
-## 남은 작업
-1. school_zone.sdf - 차단기 로봇 횡단보도 앞에 배치 
-2. yolo 보행자 인식
-3. 메세지 전송
-4. 차단기 관절 제어
-5. (시간이 된다면) 차단기 로봇이 "건너가세요" 음성 안내가 나와도 좋을 듯!
+$ ros2 run v2i_vision_pkg barricade_control_node
+
+👉🏻터미널 1~6 명령어 차례로 실행 → 카메라가 보행자 인식 즉시 자동으로 차량 정지 → 차량 멈추면 차단바 올라가고 보행자 출발 → 보행자 다 건너가면 차단바 내려가고 차량 재출발
+
+✅한 번에 실행하기 (터미널 2, 4, 5, 6 대신) <br>
+$ source ~/v2i_ws/install/setup.bash
+
+$ ros2 launch v2i_vision_pkg v2i_all_nodes.launch.py
+
+(브릿지 + 차량 주행 노드 + YOLO 감지 노드 + 차단기 제어 노드 일괄 실행)
