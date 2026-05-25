@@ -34,8 +34,6 @@ class V2ISoftStopController(Node):
 
     def alert_callback(self, msg):
         """차단기 로봇의 신호 수신"""
-        if self.startup_ticks < 50:  # 출발 전이면 무시
-            return
         if msg.data == True and not self.is_stopping:
             self.get_logger().info("🛑 [안전 통제] v2i 정지 메세지 수신. Soft Stop을 시작합니다.")
             self.is_stopping = True

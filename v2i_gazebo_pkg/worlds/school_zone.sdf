@@ -1016,7 +1016,7 @@
     <include>
       <uri>file:///home/jihyunlee/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models/prius_hybrid</uri>
       <name>prius_hybrid</name>
-      <pose>-1.088 -15.0 0.0 0 0 -3.14159</pose>
+      <pose>-1.088 -20.0 0.0 0 0 -3.14159</pose>
     </include>
     <model name='path-long_2'>
       <link name='link'>

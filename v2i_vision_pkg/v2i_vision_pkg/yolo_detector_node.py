@@ -18,7 +18,9 @@ class YoloDetectorNode(Node):
         self.alert_sent = False
         self.detect_count = 0    # 연속 감지 프레임 수
         self.no_detect_count = 0 # 연속 미감지 프레임 수
-        self.CONFIRM_FRAMES = 5  # N프레임 연속 감지/미감지 시 확정
+        self.CONFIRM_FRAMES = 5          # 보행자 감지 확정 프레임
+        self.CONFIRM_ABSENT_FRAMES = 5   # 보행자 사라짐 확정 프레임
+        self.stable_pedestrian = False   # 안정화된 보행자 존재 상태
 
         # 가제보 카메라 이미지 구독
         # 영상이 들어올 때마다 image_callback 함수 자동 실행
@@ -63,11 +65,17 @@ class YoloDetectorNode(Node):
             self.detect_count = 0
 
         confirmed_present = self.detect_count >= self.CONFIRM_FRAMES
-        confirmed_absent  = self.no_detect_count >= self.CONFIRM_FRAMES
+        confirmed_absent  = self.no_detect_count >= self.CONFIRM_ABSENT_FRAMES
+
+        # 한 번 감지되면 60프레임 연속 미감지 전까지 True 유지
+        if confirmed_present:
+            self.stable_pedestrian = True
+        if confirmed_absent:
+            self.stable_pedestrian = False
 
         # 차단기 노드에 안정화된 상태 전달
         ped_msg = Bool()
-        ped_msg.data = confirmed_present
+        ped_msg.data = self.stable_pedestrian
         self.pedestrian_pub.publish(ped_msg)
 
         # 보행자 확정 감지 → 차량 정지 신호 1회
@@ -78,12 +86,9 @@ class YoloDetectorNode(Node):
             self.v2i_alert_pub.publish(alert)
             self.alert_sent = True
 
-        # 보행자 확정 사라짐 → 횡단 완료, 차량 출발 신호
+        # 보행자 확정 사라짐 → alert_sent 초기화 (출발 신호는 barricade_control_node가 담당)
         elif confirmed_absent and self.alert_sent:
-            self.get_logger().info('보행자 통과 완료. 차량 출발 신호 전송.')
-            alert = Bool()
-            alert.data = False
-            self.v2i_alert_pub.publish(alert)
+            self.get_logger().info('보행자 사라짐 확인. 출발 신호는 barricade_control_node가 전송.')
             self.alert_sent = False
 
 
