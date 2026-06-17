@@ -4,88 +4,53 @@
 Safe-Cross: 비전 AI 기반 스마트 횡단보도 로봇과 자율주행 차량의 Vehicle-to-Infrastructure(V2I) 협력 제어 시스템
 
 ## 2. 목표
-매년 스쿨존 및 아파트 단지 내 교차로에서 발생하는 어린이 등하굣길 교통사고는 심각한 사회적 문제로 대두되고 있습니다. 특히, 현재의 자율주행 차량은 자체 탑재된 센서에 전적으로 의존하므로, 체구가 작은 어린이가 물리적 사각지대에서 갑자기 나타나는 돌발 상황에 대처하기 매우 어렵습니다. 이에 본 프로젝트는 횡단보도 인프라(스마트 차단기 로봇)와 모빌리티(자율주행 차량)가 실시간으로 데이터를 교환하며 위험을 사전에 차단하는 V2I(Vehicle-to-Infrastructure) Multi-Agent 협력 시스템을 구축합니다. 이를 통해 센서의 한계를 극복하고 어린이들의 안전한 등굣길을 보장하는 스마트 시티 교통망의 축소판을 구현하는 것을 목표로 합니다.
+매년 스쿨존 및 아파트 단지 내 교차로에서 발생하는 어린이 등하굣길 교통사고는 심각한 사회적 문제로 대두되고 있습니다. 특히, 현재의 자율주행 차량은 자체 탑재된 센서에 전적으로 의존하므로, 체구가 작은 어린이가 물리적 사각지대에서 갑자기 나타나는 돌발 상황에 대처하기 매우 어렵습니다. 
+
+이에 본 프로젝트는 횡단보도 인프라(스마트 차단기 로봇)와 모빌리티(자율주행 차량)가 실시간으로 데이터를 교환하며 위험을 사전에 차단하는 V2I(Vehicle-to-Infrastructure) Multi-Agent 협력 시스템을 구축합니다. 이를 통해 센서의 한계를 극복하고 어린이들의 안전한 등굣길을 보장하는 스마트 시티 교통망의 축소판을 구현하는 것을 목표로 합니다.
 
 ## 3. 진행 방법
 Safe-Cross는 ROS2 및 Gazebo Fortress 시뮬레이션 환경에서 다음 5단계의 파이프라인으로 동작합니다.
 
-1. 시뮬레이션 환경 구축: Gazebo Fortress를 이용해 실제 등굣길과 유사한 가상 환경을 설계합니다. 환경은 크게 도로 인프라, 동적 에이전트, 배경 요소로 구성됩니다.
-* Gazebo의 기본 도형 모델을 이용해 아스팔트 도로와 횡단보도 배치.
-* 스마트 차단기 로봇 1: 횡단보도 입구에 고정된 형태로 배치되며, 기둥(Link)과 차단바(Joint)를 1자유도 회전 관절로 연결하여 모델링. 카메라 센서 플러그인을 부착하여 시야 확보.
-* 자율주행 차량 1: 차동 구동형 모터 제어 플러그인이 적용된 차량 모델을 배치하여, ROS2를 통해 물리적인 주행과 정지가 가능하도록 구성.
-* 보행자(어린이) 1: 횡단보도 대기 구역에 배치.
-* 간단한 환경 렌더링: Gazebo Fuel의 오픈소스 3D 에셋(스쿨존 표지판, 안전 펜스, 주변 건물 등)을 활용하여 시뮬레이션의 시각적 현실감을 극대화.
+1. **시뮬레이션 환경 구축**: Gazebo Fortress를 이용해 실제 등굣길과 유사한 가상 환경을 설계합니다. 환경은 크게 도로 인프라, 동적 에이전트(스마트 차단기 로봇, 자율주행 차량, 보행자(어린이) 모델), 배경 요소로 구성됩니다.
 
-2. 인프라의 선제적 인지: 스마트 차단기 로봇이 물리적인 차단바(Joint)를 내린 채로 대기 중에 보행자(어린이)가 횡단보도에 접근하면, 탑재된 카메라 영상과 YOLO v8 모델을 통해 객체(person, car)를 실시간으로 인식합니다. 
+2. **인프라의 선제적 인지**: 스마트 차단기 로봇이 물리적인 차단바(Joint)를 내린 채로 대기 중에 보행자(어린이)가 횡단보도에 접근하면, 탑재된 카메라 영상과 YOLO v8 모델을 통해 객체(person, car)를 실시간으로 인식합니다. 
 
-3. V2I 통신: 보행자(어린이) 인지와 동시에, 스마트 차단기 로봇은 ROS2 DDS 통신망을 통해 주변 차량에 긴급 감속을 요청하는 경고 메시지를 즉각적으로 전송합니다.
+3. **V2I 실시간 통신**: 보행자(어린이) 인지와 동시에, 스마트 차단기 로봇은 ROS2 DDS 통신망을 통해 주변 차량에 긴급 감속을 요청하는 경고 메시지를 즉각적으로 전송합니다.
 
-4. 자율주행 차량의 협력 제어: 일정한 초기 속도(v)로 주행 중인 자율주행 자동차는 자체 비전 센서의 보행자 식별 여부와 무관하게, 수신된 V2I 경고 메시지를 최우선 제어 명령으로 처리합니다. 메시지 수신 즉시 속도를 일정한 변화량(예: 0.2 m/s)만큼 선형적으로 감소시키는 Soft Stop Linear Deceleration Profile을 적용하여, 횡단보도 앞에 부드럽게 정차합니다.
+4. **자율주행 차량의 협력 제어**: 일정한 초기 속도(v)로 주행 중인 자율주행 자동차는 자체 비전 센서의 보행자 식별 여부와 무관하게, 수신된 V2I 경고 메시지를 최우선 제어 명령으로 처리합니다. 메시지 수신 즉시 속도를 일정한 변화량만큼 선형적으로 감소시키는 Soft Stop Linear Deceleration Profile을 적용하여, 횡단보도 앞에 부드럽게 정차합니다.
    
-5. 안전 안내 및 상황 해제: 자율주행 차량의 완전 정차가 확인되면, 스마트 차단기 로봇이 차단바(Joint)를 올리고 보행자(어린이)에게 횡단 안내를 제공합니다. 횡단이 완료되면 V2I 경고 상태를 해제하고 차단바(Joint)를 다시 내려, 전체 교통 흐름을 정상적으로 재개합니다.
+5. **안전 횡단 및 흐름 재개**: 자율주행 차량의 완전 정차가 확인되면, 스마트 차단기 로봇이 차단바(Joint)를 올리고 보행자(어린이)에게 횡단 음성 안내를 제공합니다. 횡단이 완료되면 V2I 경고 상태를 해제하고 차단바(Joint)를 다시 내려, 전체 교통 흐름을 정상적으로 재개합니다.
 
-## 주요 파일 설명
-💡가제보 시뮬레이션 환경 구축 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
+## 팀원 역할 분담
+🙋🏻‍♀️이지현 팀원: 스마트 차단기 로봇의 YOLO 객체 탐지와 제어 및 통합 실행 / 데모 동영상 촬영을 담당했습니다.
 
-💡자율주행 자동차 주행 및 제어 (감속, 다시 시작 등) 파일: v2i_ws/src/Safe-Cross-V2I/v2i_vehicle_pkg/v2i_vehicle_pkg/v2i_soft_stop_node.py
+🙋🏻‍♀️하정연 팀원: Gazebo 시뮬레이션 환경 구축 및 자율주행 차량 제어 및 보행자 Plugin / 발표 동영상 촬영을 담당했습니다.
 
-💡보행자 (actor) 애니메이션 및 제어 파일: v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/ActorControlPlugin.cc
+## AI 사용
+Gemini와 Claude로 코드 구현에 도움을 받았습니다. 
 
-💡전체 노드 일괄 실행 파일: v2i_ws/src/Safe-Cross-V2I/v2i_vision_pkg/launch/v2i_all_nodes.launch.py
+## 참고자료
+- 객체 인식(YOLOv8 & ROS2): https://github.com/mgonzs13/yolo_ros
+- 시뮬레이션 환경 구축: https://gazebosim.org/docs/fortress/building_robot/, https://gazebosim.org/docs/fortress/ros2_integration/
+- 환경 렌더링: https://gazebosim.org/docs/latest/fuel_insert/
+- V2I 통신망: https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html
+- Kenny City Kit: https://kenney.nl/assets/city-kit-suburban
+- 보행자 모델: https://www.mixamo.com/#/
 
-👉🏻 C++ 플러그인 빌드 필요 <br>
-$ cd ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins <br>
-$ mkdir build <br>
-$ cd build <br>
-$ cmake .. <br>
-$ make
+## YouTube 발표 영상
 
-## 실행
-✅터미널 1: 가제보 실행 <br>
-$ export IGN_GAZEBO_RESOURCE_PATH=~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/models:$IGN_GAZEBO_RESOURCE_PATH
 
-$ export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=$IGN_GAZEBO_SYSTEM_PLUGIN_PATH:~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_plugins/build
+## Safe-Cross Github 링크
+https://github.com/CatherineHA2023/Safe-Cross-V2I
 
-$ ign gazebo ~/v2i_ws/src/Safe-Cross-V2I/v2i_gazebo_pkg/worlds/school_zone.sdf
+## 주요 코 설명
+💡Gazebo 시뮬레이션 환경 구축 파일: v2i_gazebo_pkg/worlds/school_zone.sdf
 
-→ 재생 버튼 클릭
+💡자율주행 자동차 주행 및 제어 (감속, 다시 시작 등) 파일: v2i_vehicle_pkg/v2i_vehicle_pkg/v2i_soft_stop_node.py
 
-✅터미널 2: 가제보 - ros 브릿지 <br>
-$ ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist /camera/image_raw@sensor_msgs/msg/Image[ignition.msgs.Image /barrier_msg@std_msgs/msg/Bool]ignition.msgs.Boolean /barricade/joint_angle@std_msgs/msg/Float64]ignition.msgs.Double
+💡보행자 (actor) 애니메이션 및 제어 파일: v2i_gazebo_plugins/ActorControlPlugin.cc
 
-✅터미널 3: rviz2로 자동차 운전석 시야 확인 <br> 
-$ rviz2
+💡스마트 차단기 YOLO 객체 탐지 및 제어 파일: v2i_vision_pkg/v2i_vision_pkg/yolo_detector_node.py
 
-(실행 후 Rviz 화면에서 Add -> By topic -> camera/image_raw/Image 플러그인을 추가하고, Topic을 /camera/image_raw, QoS를 Best Effort로 설정하세요.)
+💡전체 노드 일괄 실행 파일: v2i_vision_pkg/launch/v2i_all_nodes.launch.py
 
-✅터미널 4: 자동차 주행 노드 <br>
-$ cd ~/v2i_ws
-
-$ colcon build --symlink-install --packages-select v2i_vehicle_pkg
-
-$ source install/setup.bash
-
-$ ros2 run v2i_vehicle_pkg v2i_soft_stop_node
-
-✅터미널 5: YOLO 보행자 감지 노드 <br>
-$ cd ~/v2i_ws
-
-$ colcon build --symlink-install --packages-select v2i_vision_pkg
-
-$ source install/setup.bash
-
-$ ros2 run v2i_vision_pkg yolo_detector_node
-
-✅터미널 6: 차단기 제어 노드 <br>
-$ source ~/v2i_ws/install/setup.bash
-
-$ ros2 run v2i_vision_pkg barricade_control_node
-
-👉🏻터미널 1~6 명령어 차례로 실행 → 카메라가 보행자 인식 즉시 자동으로 차량 정지 → 차량 멈추면 차단바 올라가고 보행자 출발 → 보행자 다 건너가면 차단바 내려가고 차량 재출발
-
-✅한 번에 실행하기 (터미널 2, 4, 5, 6 대신) <br>
-$ source ~/v2i_ws/install/setup.bash
-
-$ ros2 launch v2i_vision_pkg v2i_all_nodes.launch.py
-
-(브릿지 + 차량 주행 노드 + YOLO 감지 노드 + 차단기 제어 노드 일괄 실행)
