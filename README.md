@@ -41,9 +41,6 @@ Safe-Cross는 ROS2 및 Gazebo Fortress 시뮬레이션 환경에서 다음 5단�
 - Kenny City Kit: https://kenney.nl/assets/city-kit-suburban
 - 보행자 모델: https://www.mixamo.com/#/
 
-## YouTube 발표 영상
-
-
 ## Safe-Cross Github 링크
 https://github.com/CatherineHA2023/Safe-Cross-V2I
 
