@@ -51,7 +51,9 @@ https://github.com/CatherineHA2023/Safe-Cross-V2I
 
 💡보행자 (actor) 애니메이션 및 제어 파일: v2i_gazebo_plugins/ActorControlPlugin.cc
 
-💡스마트 차단기 YOLO 객체 탐지 및 제어 파일: v2i_vision_pkg/v2i_vision_pkg/yolo_detector_node.py
+💡스마트 차단기 YOLO 객체 탐지 파일: v2i_vision_pkg/v2i_vision_pkg/yolo_detector_node.py
+
+💡스마트 차단기 동작 제어 파일: v2i_vision_pkg/v2i_vision_pkg/barricade_control_node.py                                                  
 
 💡전체 노드 일괄 실행 파일: v2i_vision_pkg/launch/v2i_all_nodes.launch.py
 
