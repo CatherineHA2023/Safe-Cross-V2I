@@ -7,7 +7,7 @@
         <pose>0.5 0 1.5 0 0.05 -1.57</pose> <always_on>1</always_on>
         <update_rate>30</update_rate>
         <visualize>true</visualize>
-        <topic>camera/image_raw</topic>
+        <topic>camera/driver_raw</topic>
         <camera>
           <horizontal_fov>1.3962634</horizontal_fov> <image>
             <width>800</width>
@@ -428,11 +428,16 @@
           <lower>-0.8727</lower>
           <upper>0.8727</upper>
         </limit>
+        <dynamics>
+          <spring_stiffness>2000.0</spring_stiffness>
+          <damping>100.0</damping>
+        </dynamics>
       </axis>
       <axis2>
         <xyz>1 0 0</xyz>
         <dynamics>
           <friction>18.0474092253</friction>
+          <damping>10.0</damping>
         </dynamics>
       </axis2>
     </joint>
@@ -448,11 +453,16 @@
           <lower>-0.8727</lower>
           <upper>0.8727</upper>
         </limit>
+        <dynamics>
+          <spring_stiffness>2000.0</spring_stiffness>
+          <damping>100.0</damping>
+        </dynamics>
       </axis>
       <axis2>
         <xyz>1 0 0</xyz>
         <dynamics>
           <friction>18.0474092253</friction>
+          <damping>10.0</damping>
         </dynamics>
       </axis2>
     </joint>
@@ -509,6 +519,7 @@
         <xyz>1 0 0</xyz>
         <dynamics>
           <friction>12.031606150200002</friction>
+          <damping>10.0</damping>
         </dynamics>
       </axis>
     </joint>
@@ -519,6 +530,7 @@
         <xyz>1 0 0</xyz>
         <dynamics>
           <friction>12.031606150200002</friction>
+          <damping>10.0</damping>
         </dynamics>
       </axis>
     </joint>

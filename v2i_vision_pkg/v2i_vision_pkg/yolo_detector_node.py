@@ -10,53 +10,56 @@ class YoloDetectorNode(Node):
     def __init__(self):
         super().__init__('yolo_detector_node')
 
-        # YOLOv8 nano 모델 로드
         self.model = YOLO('yolov8n.pt')
         self.bridge = CvBridge()
 
-        # 상태 변수
         self.alert_sent = False
-        self.detect_count = 0    # 연속 감지 프레임 수
-        self.no_detect_count = 0 # 연속 미감지 프레임 수
-        self.CONFIRM_FRAMES = 5          # 보행자 감지 확정 프레임
-        self.CONFIRM_ABSENT_FRAMES = 5   # 보행자 사라짐 확정 프레임
-        self.stable_pedestrian = False   # 안정화된 보행자 존재 상태
+        self.detect_count = 0
+        self.no_detect_count = 0
+        self.car_detect_count = 0
+        self.CONFIRM_FRAMES = 3
+        self.CONFIRM_ABSENT_FRAMES = 4
+        self.stable_pedestrian = False
+        self.stable_car = False
+        self.car_stopped = False
 
-        # 가제보 카메라 이미지 구독
-        # 영상이 들어올 때마다 image_callback 함수 자동 실행
         self.image_sub = self.create_subscription(
-            Image,
-            '/camera/image_raw',    # 가제보 카메라 토픽
-            self.image_callback,
-            10                      # 큐 사이즈
-        )
+            Image, '/camera/image_raw', self.image_callback, 10)
 
-        # 차량에게 정지/출발 신호 발행 (v2i_soft_stop_node로 전달)
+        self.road_image_sub = self.create_subscription(
+            Image, '/camera/road_raw', self.road_image_callback, 10)
+
+        self.vehicle_stopped_sub = self.create_subscription(
+            Bool, '/v2i/vehicle_stopped', self.vehicle_stopped_callback, 10)
+
         self.v2i_alert_pub = self.create_publisher(Bool, '/v2i_alert', 10)
-
-        # 차단기 노드에 보행자 존재 여부 실시간 전달
-        # → 차단기 노드가 이 신호로 차단바 내릴 타이밍을 판단함
         self.pedestrian_pub = self.create_publisher(Bool, '/detection/pedestrian_detected', 10)
+        self.vehicle_pub = self.create_publisher(Bool, '/detection/vehicle_detected', 10)
 
         self.get_logger().info('YoloDetectorNode 시작!')
 
-    def image_callback(self, msg):
-        # ROS 이미지 → OpenCV 변환
-        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+    def vehicle_stopped_callback(self, msg):
+        self.car_stopped = msg.data
+        if msg.data:
+            self.no_detect_count = 0  # 차 정지 시 누적된 미감지 카운트 초기화 (오탐 방지)
 
-        # YOLOv8 추론
-        results = self.model(frame, verbose=False, conf=0.1)
+    def image_callback(self, msg):
+        """횡단보도 카메라 - 보행자 감지"""
+        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        results = self.model(frame, verbose=False, conf=0.5, classes=[0])  # person만
 
         person_in_frame = False
         for result in results:
             for box in result.boxes:
-                if self.model.names[int(box.cls[0])] == 'person':
+                cls_name = self.model.names[int(box.cls[0])]
+                conf = float(box.conf[0])
+                x1, y1, x2, y2 = [int(v) for v in box.xyxy[0].tolist()]
+                if cls_name == 'person':
+                    self.get_logger().info(
+                        f'[crosswalk] {cls_name} conf={conf:.2f} box=({x1},{y1})-({x2},{y2})')
                     person_in_frame = True
                     break
-            if person_in_frame:
-                break
 
-        # 연속 N프레임 확인 후 확정
         if person_in_frame:
             self.detect_count += 1
             self.no_detect_count = 0
@@ -67,41 +70,75 @@ class YoloDetectorNode(Node):
         confirmed_present = self.detect_count >= self.CONFIRM_FRAMES
         confirmed_absent  = self.no_detect_count >= self.CONFIRM_ABSENT_FRAMES
 
-        # 한 번 감지되면 60프레임 연속 미감지 전까지 True 유지
         if confirmed_present:
             self.stable_pedestrian = True
-        if confirmed_absent:
+
+        if confirmed_absent and not (self.alert_sent and not self.car_stopped):
             self.stable_pedestrian = False
 
-        # 차단기 노드에 안정화된 상태 전달
         ped_msg = Bool()
         ped_msg.data = self.stable_pedestrian
         self.pedestrian_pub.publish(ped_msg)
 
-        # 보행자 확정 감지 → 차량 정지 신호 1회
-        if confirmed_present and not self.alert_sent:
-            self.get_logger().info('보행자 감지! 차량 정지 신호 전송.')
+        self._check_and_alert(confirmed_absent)
+
+    def road_image_callback(self, msg):
+        """도로 카메라 - 차량 감지"""
+        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        results = self.model(frame, verbose=False, conf=0.1, classes=[2, 3, 5, 7])  # car, motorcycle, bus, truck
+
+        car_classes = {'car', 'truck', 'bus', 'motorcycle'}
+        car_in_frame = False
+        for result in results:
+            for box in result.boxes:
+                if self.model.names[int(box.cls[0])] in car_classes:
+                    car_in_frame = True
+                    break
+
+        if car_in_frame:
+            self.car_detect_count += 1
+        else:
+            self.car_detect_count = max(0, self.car_detect_count - 1)
+
+        if self.car_detect_count >= 3:
+            self.stable_car = True
+        elif self.car_detect_count == 0:
+            self.stable_car = False
+
+        vehicle_msg = Bool()
+        vehicle_msg.data = self.stable_car
+        self.vehicle_pub.publish(vehicle_msg)
+
+        self._check_and_alert(False)
+
+    def _check_and_alert(self, confirmed_absent):
+        if self.stable_pedestrian and self.stable_car and not self.alert_sent:
+            self.get_logger().info('보행자 + 차량 감지! 차량 정지 신호 전송.')
             alert = Bool()
             alert.data = True
             self.v2i_alert_pub.publish(alert)
             self.alert_sent = True
 
-        # 보행자 확정 사라짐 → alert_sent 초기화 (출발 신호는 barricade_control_node가 담당)
-        elif confirmed_absent and self.alert_sent:
+        elif confirmed_absent and self.alert_sent and self.car_stopped:
             self.get_logger().info('보행자 사라짐 확인. 출발 신호는 barricade_control_node가 전송.')
             self.alert_sent = False
+            self.stable_car = False
+            self.car_detect_count = 0
+            self.stable_pedestrian = False
+            self.detect_count = 0
+            self.car_stopped = False
 
 
 def main(args=None):
-    rclpy.init(args=args)           # ROS2 초기화
-    node = YoloDetectorNode()       # 노드 생성
+    rclpy.init(args=args)
+    node = YoloDetectorNode()
     try:
-        rclpy.spin(node)            # 노드 계속 실행
+        rclpy.spin(node)
     except KeyboardInterrupt:
         pass
     finally:
-        node.destroy_node()         # 노드 종료
-        rclpy.shutdown()            # ROS2 종료
+        node.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

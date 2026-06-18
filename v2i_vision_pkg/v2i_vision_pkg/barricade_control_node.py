@@ -14,6 +14,8 @@ class BarricadeControlNode(Node):
         self.vehicle_stopped = False    # 차량이 완전히 정지했는지 여부
         self.pedestrian_present = False # 보행자가 현재 감지되고 있는지 여부
         self.barricade_raised = False   # 차단바가 현재 올라가 있는지 여부
+        self.vehicle_present = False    # 차량이 도로에 존재하는지 여부
+        self.no_vehicle_timer_start = None  # 차량 없을 때 3초 타이머 시작 시각
 
         # yolo_detector_node로부터 보행자 감지 상태 구독
         self.ped_sub = self.create_subscription(
@@ -28,6 +30,14 @@ class BarricadeControlNode(Node):
             Bool,
             '/v2i/vehicle_stopped',
             self.vehicle_stopped_callback,
+            10
+        )
+
+        # yolo_detector_node로부터 차량 존재 여부 구독
+        self.vehicle_present_sub = self.create_subscription(
+            Bool,
+            '/detection/vehicle_detected',
+            self.vehicle_detected_callback,
             10
         )
 
@@ -83,7 +93,13 @@ class BarricadeControlNode(Node):
         self.vehicle_stopped = msg.data
         if msg.data:
             self.get_logger().info('차량 완전 정지 확인!')
-        # 차단바 올릴 조건 재확인
+        self.check_and_open()
+
+    def vehicle_detected_callback(self, msg):
+        """yolo_detector_node로부터 차량 존재 여부 수신"""
+        self.vehicle_present = msg.data
+        if msg.data:
+            self.no_vehicle_timer_start = None  # 차량 나타나면 타이머 리셋
         self.check_and_open()
 
     def pedestrian_callback(self, msg):
@@ -95,6 +111,7 @@ class BarricadeControlNode(Node):
             self.get_logger().info('보행자 감지!')
 
         # 보행자가 있다가 사라졌을 때 → 횡단 완료 처리
+        # MIN_CROSSING_TIME 이내에는 차단바 오클루전으로 인한 오감지이므로 무시
         if not msg.data and prev_present and self.barricade_raised:
             self.get_logger().info('보행자 횡단 완료. 차단바 내리고 차량 출발 신호 전송.')
 
@@ -118,20 +135,41 @@ class BarricadeControlNode(Node):
         self.check_and_open()
 
     def check_and_open(self):
-        """차량 정지 + 보행자 존재 → 차단바 올리고 보행자 출발 안내"""
-        if self.vehicle_stopped and self.pedestrian_present and not self.barricade_raised:
-            self.get_logger().info('차량 정지 + 보행자 확인. 차단바 올리고 보행자 출발 신호 전송.')
+        """차단바 올릴 조건 확인"""
+        if not self.pedestrian_present or self.barricade_raised:
+            if not self.pedestrian_present:
+                self.no_vehicle_timer_start = None
+            return
 
-            # 차단바 올리기
-            self.set_barricade(True)
+        # 차량 있고 정지 완료 → 즉시 열기
+        if self.vehicle_present and self.vehicle_stopped:
+            self._open_barricade()
 
-            # 보행자에게 출발 신호
-            barrier_msg = Bool()
-            barrier_msg.data = True
-            self.barrier_pub.publish(barrier_msg)
+        # 차량 없음 → 3초 대기 후 열기
+        elif not self.vehicle_present:
+            if self.no_vehicle_timer_start is None:
+                self.no_vehicle_timer_start = self.get_clock().now()
+                self.get_logger().info('차량 없음 감지. 3초 후 차단바 개방 예정.')
+            else:
+                elapsed = (self.get_clock().now() - self.no_vehicle_timer_start).nanoseconds / 1e9
+                if elapsed >= 3.0:
+                    self.get_logger().info('차량 없음 3초 경과. 차단바 개방.')
+                    self._open_barricade()
 
-            # "건너가세요" 음성 안내 (백그라운드 스레드에서 재생)
-            threading.Thread(target=self._play_audio, daemon=True).start()
+    def _open_barricade(self):
+        """차단바 올리고 보행자 출발 안내"""
+        self.get_logger().info('차단바 올리고 보행자 출발 신호 전송.')
+
+        # 차단바 올리기
+        self.set_barricade(True)
+
+        # 보행자에게 출발 신호
+        barrier_msg = Bool()
+        barrier_msg.data = True
+        self.barrier_pub.publish(barrier_msg)
+
+        # "건너가세요" 음성 안내 (백그라운드 스레드에서 재생)
+        threading.Thread(target=self._play_audio, daemon=True).start()
 
     def set_barricade(self, raise_bar):
         """차단바 Joint 각도 발행"""

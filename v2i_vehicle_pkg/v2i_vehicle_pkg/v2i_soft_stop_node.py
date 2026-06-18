@@ -24,11 +24,12 @@ class V2ISoftStopController(Node):
         # 5. 주행 프로파일 변수 세팅
         self.is_stopping = False
         self.current_speed = 0.0       # 처음엔 정지 상태
-        self.target_speed = 15.0       # 목표 속도
+        self.target_speed = 20.0       # 목표 속도
         self.decel_step = 3.0         # 0.1초당 감소할 속도 변화량 (선형 감속)
         self.stop_triggered = False   # 감속 트리거 상태 플래그
         self.stopped_published = False  # 정지 신호를 이미 발행했는지 여부 (중복 발행 방지)
         self.startup_ticks = 0         # 시작 후 카운터 (50틱 = 5초 대기)
+        self.settle_ticks = 0          # 재출발 전 물리 안정화 대기 카운터
 
         self.get_logger().info("🚗 주행 제어 노드 시작: 5초 후 출발합니다.")
 
@@ -41,11 +42,11 @@ class V2ISoftStopController(Node):
         elif msg.data == False and self.is_stopping:
             self.get_logger().info("🟢 [통제 해제] 어린이(보행자) 횡단 완료. 주행을 재개합니다.")
             self.is_stopping = False
-            # 다시 목표 속도로 엑셀을 밟기 위한 초기화
-            self.target_speed = 15.0
-            self.stopped_published = False  # 다음 정지 시 다시 신호 보낼 수 있도록 초기화
+            self.current_speed = 0.0
+            self.settle_ticks = 20      # 2초간 정지 상태 유지 후 출발
+            self.target_speed = 20.0
+            self.stopped_published = False
 
-            # 차량이 다시 움직임 → barricade_control_node에 알림
             stopped_msg = Bool()
             stopped_msg.data = False
             self.stopped_pub.publish(stopped_msg)
@@ -60,6 +61,13 @@ class V2ISoftStopController(Node):
             if self.startup_ticks == 50:
                 self.get_logger().info("🚗 출발!")
             twist.linear.y = 0.0
+            self.cmd_pub.publish(twist)
+            return
+
+        if self.settle_ticks > 0:
+            self.settle_ticks -= 1
+            twist.linear.y = 0.0
+            twist.angular.z = 0.0
             self.cmd_pub.publish(twist)
             return
 

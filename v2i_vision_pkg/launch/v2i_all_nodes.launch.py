@@ -11,6 +11,8 @@ def generate_launch_description():
             arguments=[
                 '/cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist',
                 '/camera/image_raw@sensor_msgs/msg/Image[ignition.msgs.Image',
+                '/camera/road_raw@sensor_msgs/msg/Image[ignition.msgs.Image',
+                '/camera/driver_raw@sensor_msgs/msg/Image[ignition.msgs.Image',
                 '/barricade/joint_angle@std_msgs/msg/Float64]ignition.msgs.Double',
                 '/barrier_msg@std_msgs/msg/Bool]ignition.msgs.Boolean',
             ],
